@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  before_action :set_book, only:[:show, :edit, :update, :destroy]
+  before_action :set_book, only:[:show, :edit, :update, :destroy, :update_draft_status]
 
   def index
     @books = Book.all
@@ -14,6 +14,18 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+  end
+
+  def update_draft_status
+    if @book.is_draft
+      @book.update_attributes(is_draft: false)
+      flash.now[:alert] = "Book is undraft"
+      render :show
+    else
+      @book.update_attributes(is_draft: true)
+      flash.now[:alert] = "Book is draft"
+      render :show
+    end
   end
 
   def create
