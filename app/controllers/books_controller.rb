@@ -18,6 +18,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.owner_id = current_user.id
+    @book.owner_nickname = current_user.nickname
 
     if @book.save
       redirect_to @book
@@ -46,7 +48,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :description)
+    params.require(:book).permit(:title, :author, :description, :owner_id, :owner_nickname)
   end
 
 end

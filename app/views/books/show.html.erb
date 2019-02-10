@@ -1,8 +1,12 @@
 <h2><%= @book.title%></h2>
 <p><%= @book.author %></p>
 <p><%= @book.description %></p>
+<p>Review by: <%= @book.owner_nickname %></p>
+
+<%if @book.owner_id == current_user.id %>
 <p>
   <%= link_to "Edit", edit_book_path(@book) %>
   |
   <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: 'Are you sure?'} %>
 </p>
+<% end %>
