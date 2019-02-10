@@ -13,9 +13,24 @@
 
     <%= render 'layouts/navbar' %>
 
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-    <%= yield %>
+    <div class="container main">
+     <div class="row">
+       <div class="col-md-12">
+         <% flash.each do |name, message| %>
+           <div class="alert <%= bootstrap_class_for(name) %>">
+             <button class="close" data-dismiss="alert">&times;</button>
+             <%= message %>
+           </div>
+         <% end %>
+       </div>
+     </div>
+
+     <div class="row">
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
+        </div>
+      </div>
+
   </body>
 </html>
