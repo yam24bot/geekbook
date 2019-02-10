@@ -1,9 +1,0 @@
-<% @books.each do |book|%>  <% if current_user.id = book.owner_id %>
-    <% unless book.is_draft %>
-    <p><%= link_to book.title, book_path(book) %></p>
-    <p><%= envelope_for(book, size: 80)%></p>
-    <p><%= raw book.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary"}.join(' ') %></p>
-    <hr>
-    <% end %>
-  <% end %>
-<% end %>

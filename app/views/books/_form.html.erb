@@ -1,19 +1,19 @@
 <%= form_for @book, html: {multipart: true} do |f| %>
 
-  <%= f.label :title%>
-  <%= f.text_field :title%>
+  <p><%= f.label :title%></p>
+  <p><%= f.text_field :title%></p>
 
-  <%= f.label :author%>
-  <%= f.text_field :author%>
+  <p><%= f.label :author%></p>
+  <p><%= f.text_field :author%></p>
 
-  <%= f.label :description%>
-  <%= f.text_area :description%>
+  <p><%= f.label :description%></p>
+  <p><%= f.text_area :description%></p>
 
-  <%= f.label :Genre%>
-  <%= f.text_field :all_tags%>
+  <p><%= f.label :Genre%></p>
+  <p><%= f.text_field :all_tags%></p>
 
-  <%= f.file_field :envelope %>
+  <p><%= f.file_field :envelope %></p>
 
-  <%= f.submit "Save" %>
+<p>  <%= f.submit "Save" %><p>
 
 <% end %>
