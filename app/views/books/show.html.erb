@@ -2,6 +2,8 @@
 <p><%= @book.author %></p>
 <p><%= @book.description %></p>
 
+<p><%= raw @book.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary"}.join(' ') %></p>
+
 <p><%= envelope_for(@book, size: 240)%></p>
 
 <p>Review by: <%= @book.owner_nickname %></p>

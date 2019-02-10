@@ -23,6 +23,7 @@ class BooksController < ApplicationController
 
     if @book.save
       redirect_to @book
+      flash[:danger] = "Conplete all fields"
     else
       render :new
     end
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
   def update
     if @book.update_attributes(book_params)
       redirect_to @book
+      flash[:danger] = "Conplete all fields"
     else
       render :edit
     end
@@ -48,7 +50,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :description, :owner_id, :owner_nickname, :envelope)
+    params.require(:book).permit(:title, :author, :description, :owner_id, :owner_nickname, :envelope, :all_tags)
   end
 
 end

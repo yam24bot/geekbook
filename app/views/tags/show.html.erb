@@ -1,6 +1,12 @@
-<% @books.each do |book|%>
+<h1><%= @tag.name %></h1>
+
+<% if @tag.books.empty? %>
+  <h2>Статей нет</h2>
+<% else %>
+  <% @tag.books.each do |book| %>
   <p><%= link_to book.title, book_path(book) %></p>
   <p><%= envelope_for(book, size: 80)%></p>
   <p><%= raw book.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary"}.join(' ') %></p>
   <hr>
+  <% end %>
 <% end %>
