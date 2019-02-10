@@ -1,0 +1,23 @@
+<h2><%= @book.title%></h2>
+<p><%= @book.author %></p>
+<p><%= @book.description %></p>
+
+<p><%= raw @book.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary"}.join(' ') %></p>
+
+<p><%= envelope_for(@book, size: 240)%></p>
+
+<p>Review by: <%= @book.owner_nickname %></p>
+
+<%if @book.owner_id == current_user.id %>
+<br>
+  <% if @book.is_draft? %>
+    <%= button_to "Undraft", update_draft_status_book_path(@book.id), method: :put, class:"btn btn-success"%>
+  <% else %>
+    <%= button_to "Draft", update_draft_status_book_path(@book.id), method: :put, class: "btn btn-danger"%>
+  <% end %>
+<p>
+  <%= link_to "Edit", edit_book_path(@book) %>
+  |
+  <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
+<% end %>
