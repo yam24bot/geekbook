@@ -1,3 +1,4 @@
 <% @books.each do |book|%>
-  <%= link_to book.title, book_path(book) %>
+  <p><%= envelope_for(book, size: 80)%></p>
+  <p><%= link_to book.title, book_path(book) %></p><hr>
 <% end %>

@@ -2,7 +2,7 @@
 <p><%= @book.author %></p>
 <p><%= @book.description %></p>
 
-<p><%= image_tag @book.envelope.url(:thumb) if @book.envelope? %></p>
+<p><%= envelope_for(@book, size: 240)%></p>
 
 <p>Review by: <%= @book.owner_nickname %></p>
 
