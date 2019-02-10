@@ -1,6 +1,9 @@
 <h2><%= @book.title%></h2>
 <p><%= @book.author %></p>
 <p><%= @book.description %></p>
+
+<p><%= image_tag @book.envelope.url(:thumb) if @book.envelope? %></p>
+
 <p>Review by: <%= @book.owner_nickname %></p>
 
 <%if @book.owner_id == current_user.id %>
