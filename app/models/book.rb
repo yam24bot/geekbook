@@ -1,8 +1,10 @@
 class Book < ApplicationRecord
   mount_uploader :envelope, EnvelopeUploader
 
-  has_many :taggings
-  has_many :tags, through: :taggings
+  # belongs_to :user
+
+  has_many :taggings, :dependent => :destroy
+  has_many :tags, through: :taggings, :dependent => :destroy
 
   def all_tags
     self.tags.map(&:name).join(', ')
@@ -14,5 +16,5 @@ class Book < ApplicationRecord
     end
   end
 
-  validates :title, :author, :description, :envelope, presence: true
+  # validates :title, :author, :description, :envelope, presence: true
 end

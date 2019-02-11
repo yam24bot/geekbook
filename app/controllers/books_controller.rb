@@ -30,8 +30,9 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.owner_id = current_user.id
+    # @book.owner_id = current_user.id
     @book.owner_nickname = current_user.nickname
+    @book.owner_id = current_user.id
 
     if @book.save
       redirect_to @book
